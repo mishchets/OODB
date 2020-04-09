@@ -1,0 +1,37 @@
+CREATE TABLE public.source
+(
+    id bigint NOT NULL,
+    name text COLLATE pg_catalog."default",
+    CONSTRAINT source_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.place
+(
+    id bigint NOT NULL,
+    name text COLLATE pg_catalog."default",
+    CONSTRAINT place_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.forecast
+(
+    id bigint NOT NULL,
+    date date,
+    temperature integer,
+    cloud text COLLATE pg_catalog."default",
+    wind_dir text COLLATE pg_catalog."default",
+    wind_speed integer,
+    precipitation integer,
+    place_id bigint,
+    source_id bigint,
+    CONSTRAINT forecast_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.meteostation
+(
+    id bigint NOT NULL,
+    name text COLLATE pg_catalog."default",
+    coordination_x integer,
+    coordination_y integer,
+    forecast_id bigint,
+    CONSTRAINT meteostation_pkey PRIMARY KEY (id)
+);
